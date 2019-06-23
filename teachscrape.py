@@ -28,6 +28,17 @@ driver.get("http://www.associationofchemistryteachers.org/MembersDirectories.asp
 driver.find_element_by_xpath('//*[@id="lbtnA"]').click()
 for j in range(0,pages[0]):
     if j != 0:
+        if j==7:
+            j = j - 1
+        if (j ==8): 
+            j = j -2
+        if j == 9:
+            j = j - 3
+        if j == 10:
+            j = j-4
+        if j >= 11:
+            j =j-2
+                
         page_id = '//*[@id="dlPaging_ctl%02d_lnkbtnPaging"]'%(j)
         driver.find_element_by_xpath(page_id).click()
         
