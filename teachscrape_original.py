@@ -19,31 +19,28 @@ writer.writerow(['Name','Designation','ResAddress','Contact','Email'])
 chrome_path = "/usr/bin/chromedriver"
 driver = webdriver.Chrome(chrome_path)
 
-pages=[180]
+pages=[3]
 
 #======= Open Site =========
 driver.get("http://www.associationofchemistryteachers.org/MembersDirectories.aspx")
 
 #------ Go to Alphabet ----------
-#driver.find_element_by_xpath('//*[@id="lbtnC"]').click()
+driver.find_element_by_xpath('//*[@id="lbtnC"]').click()
 for j in range(0,pages[0]):
     if j != 0:
-        if pages[0] >= 12:
-            if (j >= 6) & (j<= pages[0]-3):
-                j = 6
-            if (j == pages[0]-2 ) : 
-                j = 9
-            if j == pages[0]-1 :
-                j = 10
-            if j == pages[0]:
-                j = 11
-            
+        if j==7:
+            j = j - 1
+        if (j ==8): 
+            j = j -2
+        if j == 9:
+            j = j - 3
+        if j == 10:
+            j = j-4
+        if j >= 11:
+            j =j-2
                 
         page_id = '//*[@id="dlPaging_ctl%02d_lnkbtnPaging"]'%(j)
-        print(page_id)
         driver.find_element_by_xpath(page_id).click()
-        time.sleep(0.5)
-        
         
     for i in range(0,12):
         entry = [] 
@@ -87,7 +84,7 @@ for j in range(0,pages[0]):
 
 
 #========== Change of Letter ==============================
-#driver.find_element_by_xpath('//*[@id="lbtnB"]').click()
+driver.find_element_by_xpath('//*[@id="lbtnB"]').click()
 
 
 
